@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="4dp">
+    android:foreground="@drawable/ripple"
+    android:padding="5dp">
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline2"
@@ -67,40 +68,44 @@
         android:paddingTop="8dp"
         android:textColor="#000000"
         android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="@id/guideline6"
+        app:layout_constraintBottom_toTopOf="@+id/guideline5"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/guideline8"
         app:layout_constraintTop_toTopOf="@+id/guideline7"
-        app:layout_constraintVertical_bias="1.0"
-        />
+        app:layout_constraintVertical_bias="1.0" />
 
     <TextView
         android:id="@+id/title"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="3dp"
         android:layout_marginEnd="8dp"
         android:fontFamily="@font/amaranth_bold"
         android:includeFontPadding="false"
         android:textColor="#FF0000"
         android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="@id/guideline5"
+        app:layout_constraintBottom_toTopOf="@+id/guideline3"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/guideline8"
-        app:layout_constraintTop_toTopOf="@id/guideline6" />
+        app:layout_constraintTop_toTopOf="@+id/guideline5"
+        app:layout_constraintVertical_bias="1.0" />
 
-    <ImageView
+    <com.makeramen.roundedimageview.RoundedImageView
         android:id="@+id/imagenPersonaje"
         android:layout_width="82dp"
         android:layout_height="86dp"
+        android:layout_marginStart="5dp"
         android:layout_marginTop="16dp"
+        android:layout_marginEnd="5dp"
+        android:scaleType="centerCrop"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/guideline8"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline7"
-        tools:srcCompat="@tools:sample/avatars" />
+        app:riv_corner_radius="10dp"
+        />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

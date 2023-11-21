@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">practica2</string>
+    <string name="nombreApp">Game Of Thrones API</string>
 </resources>

@@ -9,8 +9,11 @@ data class Personajes(
     var fullName:String?,
     @SerializedName("title")
     var title:String?,
+    @SerializedName("imageUrl")
+    var imageUrl:String?,
     @SerializedName("image")
-    var imageUrl:String?
+    var image:String?
+
 
 
 

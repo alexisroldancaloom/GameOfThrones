@@ -10,13 +10,12 @@ import com.caloomboom.practica2.model.Personajes
 import com.caloomboom.practica2.utils.Constants
 import java.util.ArrayList
 
-class PersonajesAdapter (private var personajes: ArrayList<Personajes>):RecyclerView.Adapter<PersonajesAdapter.ViewHolder>(){
+class PersonajesAdapter (private var personajes: ArrayList<Personajes>, private var onPersonajeClicked:(Personajes) -> Unit):RecyclerView.Adapter<PersonajesAdapter.ViewHolder>(){
 
     class ViewHolder(private var binding: PersonajeElementBinding):RecyclerView.ViewHolder(binding.root){
         fun bind(personajes:Personajes){
             binding.nameCharacter.text=personajes.fullName
             binding.title.text=personajes.title
-            Log.d(Constants.LOGTAG,"aQIJDKS ${personajes.imageUrl}")
             Glide.with(itemView.context)
                 .load(personajes.imageUrl)
                 .into(binding.imagenPersonaje)
@@ -35,5 +34,9 @@ class PersonajesAdapter (private var personajes: ArrayList<Personajes>):Recycler
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val personaje= personajes[position]
         holder.bind(personaje)
+
+        holder.itemView.setOnClickListener{
+            onPersonajeClicked(personaje)
+        }
     }
 }

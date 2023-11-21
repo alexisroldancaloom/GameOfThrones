@@ -1,13 +1,14 @@
 package com.caloomboom.practica2.ui.activities
 
 import GameOfThronesInterface
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Toast
+import androidx.core.os.bundleOf
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.caloomboom.practica2.databinding.ActivityMainBinding
 import com.caloomboom.practica2.model.Personajes
 import com.caloomboom.practica2.network.RetrofitService
@@ -26,6 +27,7 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+
         val call = RetrofitService.getRetrofit().create(GameOfThronesInterface::class.java).getPersonajes()
 
         call.enqueue(object : Callback<List<Personajes>>{
@@ -37,7 +39,18 @@ class MainActivity : AppCompatActivity() {
                 Log.d(Constants.LOGTAG, "Respuesta del servicio ${response.toString()}")
                 Log.d(Constants.LOGTAG,"Datos ${response.body().toString()}")
 
-                val personajesAdapter = PersonajesAdapter(ArrayList(response.body()))
+                val personajesAdapter = PersonajesAdapter(ArrayList(response.body())){
+                    personajes ->
+                    Toast.makeText(this@MainActivity,"Click ${personajes.title}",Toast.LENGTH_SHORT).show()
+
+                    val bundle = bundleOf(
+                        "id" to personajes.id
+                    )
+
+                    val intent = Intent(this@MainActivity, DetailsActivity::class.java)
+                    intent.putExtras(bundle)
+                    startActivity(intent)
+                }
                 val layoutManager = LinearLayoutManager(this@MainActivity)
                 layoutManager.orientation = LinearLayoutManager.VERTICAL
                 binding.personajesList.layoutManager = layoutManager
