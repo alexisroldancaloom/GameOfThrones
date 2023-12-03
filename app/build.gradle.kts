@@ -1,6 +1,7 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+    id("com.google.gms.google-services")
 }
 
 android {
@@ -39,6 +40,7 @@ android {
 }
 
 dependencies {
+    implementation("com.google.firebase:firebase-auth:22.3.0")
     val retrofitVersion="2.9.0"
     val glideVersion="4.15.1"
     implementation("androidx.core:core-ktx:1.9.0")

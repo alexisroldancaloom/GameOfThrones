@@ -9,11 +9,14 @@ import android.view.View
 import android.widget.Toast
 import androidx.core.os.bundleOf
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.caloomboom.practica2.Logging
 import com.caloomboom.practica2.databinding.ActivityMainBinding
 import com.caloomboom.practica2.model.Personajes
 import com.caloomboom.practica2.network.RetrofitService
 import com.caloomboom.practica2.ui.adapters.PersonajesAdapter
 import com.caloomboom.practica2.utils.Constants
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -21,11 +24,23 @@ import java.util.ArrayList
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
-
+    private lateinit var firebaseAuth: FirebaseAuth
+    private var user:FirebaseUser?=null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        firebaseAuth=FirebaseAuth.getInstance()
+        user=firebaseAuth.currentUser
+
+        binding.btnSignOut.setOnClickListener{
+
+
+            firebaseAuth.signOut()
+            startActivity(Intent(this, Logging::class.java))
+            finish()
+        }
 
 
         val call = RetrofitService.getRetrofit().create(GameOfThronesInterface::class.java).getPersonajes()

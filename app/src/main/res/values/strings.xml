@@ -1,4 +1,12 @@
 <resources>
     <string name="app_name">practica2</string>
     <string name="nombreApp">Game Of Thrones API</string>
+    <string name="ingresar">Ingresar</string>
+    <string name="registrarse">Registrarse</string>
+    <string name="correo">Ingresar Correo electrónico</string>
+    <string name="contraseña">Ingresar Contraseña</string>
+    <string name="iniciarSesion">Inicia Sesión</string>
+    <string name="contraseñaOlvidada">¿Olvidó su contraseña? Restablecer aquí</string>
+    <string name="derechos">© Alexis Roldán</string>
+    <string name="cerrarSesion">Cerrar Sesión</string>
 </resources>
