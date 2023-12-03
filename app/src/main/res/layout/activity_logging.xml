@@ -6,7 +6,14 @@
     android:layout_height="match_parent"
     tools:context=".Logging">
 
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
 
+        app:srcCompat="@drawable/fondosplash"
+        tools:layout_editor_absoluteX="0dp" />
     <ScrollView
         android:layout_width="0dp"
         android:layout_height="0dp"
